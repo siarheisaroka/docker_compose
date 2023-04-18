@@ -1,0 +1,68 @@
+version: "3.2"
+services:
+  db:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: db/variables.env
+
+    container_name: db
+    hostname: db
+    ports:
+      - "5432:5432"
+    networks:
+      - back
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+      args:
+        - VERSION=v2.0
+    tty: true
+    
+    env_file: 
+      - app/variables.env
+ 
+    container_name: app
+    hostname: app
+    command: > 
+                sh -c "./start.sh"
+
+    ports:
+      - "8080:8000"
+    networks:
+      - back
+    volumes:
+      - static_volume:/var/www/devopslab/staticfiles
+    depends_on: 
+            - db
+    restart: unless-stopped
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    hostname: nginx
+    ports:
+      - "80:80"
+      - target: 443
+        published: 443
+        protocol: tcp
+        mode: host
+    networks:
+      - front
+      - back
+    volumes:
+      - static_volume:/var/www/devopslab/staticfiles
+    depends_on:
+      - app
+    restart: unless-stopped
+  
+volumes:
+  postgres_data:
+  static_volume:
+networks:
+  front:
+  back:
+    internal: true
+ 
+  
