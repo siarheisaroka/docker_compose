@@ -1,13 +1,5 @@
 Task goals
 
-    Make a fork of the  https://git.epam.com/vyacheslav_razin/devopslab.git repository in EPAM GitLab.
-    Install and configure required components and evnironment for django application based on Python. You could use your own Linux VM or use your VM from Linux course in EPAM Cloud.
-    Containerise this app using Docker and Docker-compose and some best-practices.
-    Create a separate branch in your repository, Implement all required changes to the code with the list of steps and commands in README.md file how to run your application (on another host) and push there.
-    Create a pull request from your branch and assing only your Mentor with Maintainer role to the repository.
-    Upload sreenshot of a browser with a working application below by Name_Lastname_ft.png.
-    Ask mentor for review.
-
 Python
 
     Check Python. If it is absent, install it.
