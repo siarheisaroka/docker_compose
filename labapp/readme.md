@@ -156,11 +156,7 @@ Docker
         Database
         Application
 
-The result of the completed task should be worked containerized web application.
-Additional Information
 
-    Allowed ports on the EPAM Cloud machine: 22, 80, 443, 3389.
-    Configs should be uploaded to your fork of the application repository. Be careful with secrets.
 
 Useful docs
 
